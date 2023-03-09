@@ -7,8 +7,8 @@ export default function SearchIcon({ className, size }: SvgIconProps<void>) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className={cx("", className)}
-      width="44"
-      height="44"
+      height={size ? size * 4 : "100%"}
+      width={size ? size * 4 : "100%"}
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"

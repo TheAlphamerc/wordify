@@ -22,7 +22,7 @@ export default function SearchBar({
     <form onSubmit={search}>
       <div className="theme-input flex ">
         <input
-          className="peer w-full bg-surface outline-none placeholder:text-sm"
+          className="peer w-full bg-surface outline-none placeholder:text-sm theme-text-sub1"
           placeholder="Search for any keyword"
           required={true}
           onChange={(e) => {
@@ -32,7 +32,14 @@ export default function SearchBar({
         {status === "loading" ? (
           <Loading className="h-6 w-6" />
         ) : (
-          <SvgIcon className="h-6 w-6" icon={"Search"} />
+          <button
+            className="h-6 w-6"
+            onClick={() => {
+              search;
+            }}
+          >
+            <SvgIcon className="h-6 w-6" icon={"Search"} />
+          </button>
         )}
       </div>
     </form>

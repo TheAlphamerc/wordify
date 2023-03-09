@@ -4,9 +4,30 @@ import BookIcon from "./book.icon";
 import ToggleIcon from "./toggle.icon";
 import SearchIcon from "./search.icon";
 import LightDark from "./light-dark.icon";
-type Icons = "Book" | "Toggle" | "Search" | "LightDark";
+import Play from "./play-pause.icon";
+type Icons = "Book" | "Toggle" | "Search" | "LightDark" | "Play";
 
-export type SvgIconSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+export type SvgIconSize =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 11
+  | 12
+  | 13
+  | 14
+  | 15
+  | 16
+  | 17
+  | 18
+  | 19
+  | 20;
 export class Config<T> {
   public variant: Variant<T>;
   constructor(public value: T) {
@@ -32,7 +53,7 @@ type SvgIconButtonProps = {
 const SvgIcon = ({
   icon,
   className,
-  size,
+  size = 5,
   variant,
   onClick,
 }: SvgIconButtonProps) => {
@@ -72,7 +93,14 @@ function getSVGIcon(
           config={new Config<Variant<"light" | "dark">>(variant)}
         />
       );
-      break;
+    case "Play":
+      return (
+        <Play
+          size={size}
+          className={className}
+          config={new Config<Variant<"play" | "pause">>(variant)}
+        />
+      );
 
     default:
       return <></>;

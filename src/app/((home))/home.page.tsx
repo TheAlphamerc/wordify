@@ -32,6 +32,7 @@ export default function HomePage() {
       } else {
         setStatus("failed");
         setError(data);
+        setData(undefined);
       }
     } catch (error) {
       console.log(error);
@@ -39,16 +40,34 @@ export default function HomePage() {
     }
   }
   return (
-    <div className=" max-w-3xl mx-auto">
+    <div className="max-w-3xl mx-auto px-4 sm:px-0">
       <Appbar />
       <SearchBar status={status} setKeyword={setKeyword} search={search} />
       {data && (
         <section className="py-10 flex flex-col">
-          <Label size="h1" variant="t1">
-            {data[0].word}
-          </Label>
-          <Label className="theme-text-primary">{data[0].phonetic}</Label>
-
+          <div className="flex place-content-between items-center">
+            <div className="flex flex-col">
+              <Label size="h1" variant="t1" className="text-6xl">
+                {data[0].word}
+              </Label>
+              <Label className="theme-text-primary">{data[0].phonetic}</Label>
+            </div>
+            <button
+              className="flex items-center place-content-center p-2 theme-bg-primary rounded-full hover:shadow-lg hover:scale-110 transition-all duration-200"
+              onClick={() => {
+                const utterance = new SpeechSynthesisUtterance(
+                  data[0].phonetic
+                );
+                speechSynthesis.speak(utterance);
+              }}
+            >
+              <SvgIcon
+                icon={"Play"}
+                className="theme-text-on-primary"
+                size={10}
+              />
+            </button>
+          </div>
           <div className="flex flex-col gap-2">
             <Meanings meanings={data[0].meanings} />
           </div>
