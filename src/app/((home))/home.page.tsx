@@ -28,6 +28,7 @@ export default function HomePage() {
       if (dynamicData.status === 200) {
         console.log(data);
         setData(data);
+        setError(data);
         setStatus("success");
       } else {
         setStatus("failed");
