@@ -55,9 +55,8 @@ export default function HomePage() {
             <button
               className="flex items-center place-content-center p-2 theme-bg-primary rounded-full hover:shadow-lg hover:scale-110 transition-all duration-200"
               onClick={() => {
-                const utterance = new SpeechSynthesisUtterance(
-                  data[0].phonetic
-                );
+                const wordToSay = data[0].word ?? data[0].phonetic;
+                const utterance = new SpeechSynthesisUtterance(wordToSay);
                 speechSynthesis.speak(utterance);
               }}
             >
