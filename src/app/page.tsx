@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const { toggleTheme, darkMode } = useTheme();
   return (
-    <main className={"bg-default"}>
+    <main className={"bg-default min-h-screen"}>
       <HomePage />
     </main>
   );
