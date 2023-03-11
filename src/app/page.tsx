@@ -1,18 +1,18 @@
 "use client";
 
-import SvgIcon from "@/component/icons/svg-icon";
-import { Inter } from "next/font/google";
+import { Inter, Source_Serif_Pro } from "next/font/google";
 import HomePage from "./((home))/home.page";
-import { useTheme } from "./hook/use-theme.hook";
-import styles from "./page.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const nunitoSans = Source_Serif_Pro({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export default function Home() {
-  const { toggleTheme, darkMode } = useTheme();
   return (
-    <main className={"bg-default min-h-screen"}>
+    <div className={nunitoSans.className}>
       <HomePage />
-    </main>
+    </div>
   );
 }

@@ -6,6 +6,19 @@ import Appbar from "./((component))/appbar.component";
 import Loading from "@/component/atom/loader.component";
 import SearchBar from "./((component))/search-bar.component";
 import Label from "@/component/atom/label.component";
+import { Prata, Courgette } from "next/font/google";
+
+const spaceMono = Courgette({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
+
+const prata = Prata({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
 
 export default function HomePage() {
   const [keyword, setKeyword] = React.useState<string>("");
@@ -41,14 +54,18 @@ export default function HomePage() {
     }
   }
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-0">
+    <main className="max-w-3xl mx-auto px-4 sm:px-0">
       <Appbar />
       <SearchBar status={status} setKeyword={setKeyword} search={search} />
       {data && (
         <section className="py-10 flex flex-col">
           <div className="flex place-content-between items-center">
-            <div className="flex flex-col">
-              <Label size="h1" variant="t1" className="text-6xl">
+            <div className="flex flex-col gap-1">
+              <Label
+                size="h1"
+                variant="t1"
+                className={`text-4xl first-letter:uppercase ${prata.className}`}
+              >
                 {data[0].word}
               </Label>
               <Label className="theme-text-primary">{data[0].phonetic}</Label>
@@ -83,7 +100,7 @@ export default function HomePage() {
           </div>
         </>
       )}
-    </div>
+    </main>
   );
 }
 
@@ -96,7 +113,7 @@ function Meanings({ meanings }: any) {
           <>
             <div key={index}>
               <div className="flex gap-4 items-center my-4">
-                <Label size="h2" variant="t2" className="">
+                <Label size="h2" className={spaceMono.className}>
                   {partOfSpeech}
                 </Label>
                 <div className="flex-1 border-b h-1 " />
@@ -121,8 +138,8 @@ function Definition({ definitions }: any) {
           key={index}
           className="flex flex-col pb-2 list-disc list-outside pl-4"
         >
-          <li>
-            <Label size="h3" variant="t3">
+          <li key={index}>
+            <Label size="h3" variant="t3" className="cursor-pointer">
               {item.definition}
             </Label>
 
@@ -156,7 +173,7 @@ function Nonyms({ nonyms, label }: any) {
             <Label
               key={index}
               size="body"
-              className="italic theme-text-primary"
+              className={`theme-text-primary ${prata.className}`}
             >
               {item}
             </Label>

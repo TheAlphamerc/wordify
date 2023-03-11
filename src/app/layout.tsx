@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={"bg-default min-h-screen"}>{children}</body>
       <AnalyticsWrapper />
     </html>
   );

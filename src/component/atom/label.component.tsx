@@ -11,6 +11,7 @@ type TextProps = {
   variant?: Variant;
   children: any;
   primary?: boolean;
+  onClick?: React.MouseEventHandler<HTMLSpanElement> | undefined;
 };
 
 /**
@@ -30,9 +31,11 @@ const Label: React.FC<TextProps> = ({
   variant,
   children,
   primary,
+  onClick,
 }): React.ReactElement<TextProps> => {
   return (
     <span
+      onClick={onClick}
       className={cx(
         "",
         className,
