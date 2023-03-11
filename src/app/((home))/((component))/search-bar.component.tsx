@@ -8,13 +8,14 @@ import cx from "classnames";
  */
 
 export default function SearchBar({
-  className,
+  keyword,
   status,
   search,
   setKeyword = () => {},
 }: {
   className?: string;
   status: "idle" | "loading" | "failed" | "success";
+  keyword: string;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
   search: (e: React.FormEvent<HTMLFormElement>) => void;
 }) {
@@ -28,12 +29,13 @@ export default function SearchBar({
           onChange={(e) => {
             setKeyword(e.target.value);
           }}
+          value={keyword}
         />
         {status === "loading" ? (
           <Loading className="h-6 w-6" />
         ) : (
           <button
-            className="h-6 w-6"
+            className="h-6 w-6 theme-text-sub1"
             onClick={() => {
               search;
             }}
