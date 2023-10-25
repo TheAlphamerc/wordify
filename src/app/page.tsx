@@ -1,10 +1,10 @@
 "use client";
 
-import { Inter, Source_Serif_Pro } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 import HomePage from "./((home))/home.page";
 
 const inter = Inter({ subsets: ["latin"] });
-const nunitoSans = Source_Serif_Pro({
+const nunitoSans = Roboto({
   subsets: ["latin"],
   weight: "400",
 });

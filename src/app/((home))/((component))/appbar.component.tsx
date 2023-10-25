@@ -3,7 +3,7 @@
 import React from "react";
 import { Inter } from "next/font/google";
 
-import cx from "classnames";
+// import cx from "classnames";
 import SvgIcon from "@/component/icons/svg-icon";
 import { useTheme } from "@/app/hook/use-theme.hook";
 
